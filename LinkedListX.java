@@ -13,7 +13,7 @@ class Link {
     }
 }
 
-public class LinkedListX{
+public class LinkedListX {
     public Link first;
 
     public LinkedListX(){
@@ -37,7 +37,6 @@ public class LinkedListX{
     }
 
     public void display(){
-        System.out.println("first ==> last");
         Link current = first;
         while (current != null){
             current.displayLink();

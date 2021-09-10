@@ -40,7 +40,6 @@ public class DoubleEndedList {
     }
 
     public void display(){
-        System.out.println("first ==> last");
         Link current = first;
         while (current != null){
             current.displayLink();
