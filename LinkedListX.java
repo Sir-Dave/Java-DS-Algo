@@ -1,17 +1,15 @@
 package com.sirdave.java_ds_book;
 
 class Link {
-    public int iData;
     public double dData;
     public Link next;
 
-    public Link(int id, double dd){
-        iData = id;
+    public Link(double dd){
         dData = dd;
     }
 
     public void displayLink(){
-        System.out.println("{" +  iData + ", " + dData + "} ");
+        System.out.print(dData + " ");
     }
 }
 
@@ -26,8 +24,8 @@ public class LinkedListX{
         return first == null;
     }
 
-    public void insertFirst(int iData, double dData){
-        Link newLink = new Link(iData, dData);
+    public void insertFirst(double dData){
+        Link newLink = new Link(dData);
         newLink.next = first;
         first = newLink;
     }
@@ -49,7 +47,7 @@ public class LinkedListX{
 
     public Link find(int key){
         Link current = first;
-        while(current.iData != key){
+        while(current.dData!= key){
             if (current.next == null)
                 return null;
             else
@@ -61,7 +59,7 @@ public class LinkedListX{
     public Link delete(int key){
         Link current = first;
         Link previous = first;
-        while (current.iData != key){
+        while (current.dData != key){
             if (current.next == null)
                 return null;
             else{
@@ -81,21 +79,21 @@ public class LinkedListX{
 
     public static void main(String[] args){
         LinkedListX linkedList = new LinkedListX();
-        linkedList.insertFirst(1, 10);
-        linkedList.insertFirst(2, 20);
-        linkedList.insertFirst(3, 30);
-        linkedList.insertFirst(4, 40);
-        linkedList.insertFirst(5, 50);
+        linkedList.insertFirst(10);
+        linkedList.insertFirst(20);
+        linkedList.insertFirst(30);
+        linkedList.insertFirst(40);
+        linkedList.insertFirst(50);
 
-        Link num = linkedList.find(2);
+        Link num = linkedList.find(20);
         if (num != null)
-            System.out.println("Found link with data " + num.iData);
+            System.out.println("Found link with data " + num.dData);
         else
             System.out.println("Couldn't find link");
 
         Link del = linkedList.delete(4);
         if (del != null)
-            System.out.println("Deleted link with data " + del.iData);
+            System.out.println("Deleted link with data " + del.dData);
         else
             System.out.println("Couldn't delete link");
 
