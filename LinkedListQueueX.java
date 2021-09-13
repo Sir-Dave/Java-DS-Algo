@@ -7,7 +7,7 @@ public class LinkedListQueueX {
         list = new DoubleEndedList();
     }
 
-    public void enqueue(double data){
+    public void enqueue(int data){
         list.insertLast(data);
     }
 

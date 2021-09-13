@@ -7,7 +7,7 @@ public class LinkedListStackX {
         list = new DoubleEndedList();
     }
 
-    public void push(double value){
+    public void push(int value){
         list.insertFirst(value);
     }
 

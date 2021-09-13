@@ -13,7 +13,7 @@ public class DoubleEndedList {
         return first == null;
     }
 
-    public void insertFirst(double data){
+    public void insertFirst(int data){
         Link newLink = new Link(data);
         if (isEmpty())
             last = newLink;
@@ -21,7 +21,7 @@ public class DoubleEndedList {
         first = newLink;
     }
 
-    public void insertLast(double data){
+    public void insertLast(int data){
         Link newLink = new Link(data);
         if (isEmpty())
             first = newLink;

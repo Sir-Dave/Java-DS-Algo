@@ -1,10 +1,10 @@
 package com.sirdave.java_ds_book;
 
 class Link {
-    public double dData;
+    public int dData;
     public Link next;
 
-    public Link(double dd){
+    public Link(int dd){
         dData = dd;
     }
 
@@ -24,7 +24,7 @@ public class LinkedListX {
         return first == null;
     }
 
-    public void insertFirst(double dData){
+    public void insertFirst(int dData){
         Link newLink = new Link(dData);
         newLink.next = first;
         first = newLink;
