@@ -69,24 +69,81 @@ public class DoublyLinkedListX {
         return temp;
     }
 
-    public DoubleLink deleteKey(int value) {
-        return null;
+    public boolean insertAfter(int key, int value) {
+        DoubleLink newLink = new DoubleLink(value);
+        DoubleLink current = first;
+        while (current.data != key){
+            current = current.next;
+            if (current == null){
+                return false;
+            }
+        }
+        if (current == last){
+            newLink.next = null;
+            last = newLink;
+        }
+        else {
+            newLink.next = current.next;
+            current.next.previous = newLink;
+        }
+        newLink.previous = current;
+        current.next = newLink;
+        return true;
     }
 
-    public void insertAfter(int value) {
+    public DoubleLink deleteKey(int key) {
+        DoubleLink current = first;
+        while (current.data != key){
+            current = current.next;
+            if (current == null){
+                return null;
+            }
+        }
 
+        if (current == first)
+            first = current.next;
+        else
+            current.previous.next = current.next;
+
+        if (current == last)
+            last = current.previous;
+        else
+            current.next.previous = current.previous;
+
+        return current;
     }
 
     public void displayForward() {
-
+        DoubleLink current = first;
+        while (current != null){
+            current.displayLink();
+            current = current.next;
+        }
+        System.out.println("");
     }
 
     public void displayBackward() {
-
+        DoubleLink current = last;
+        while (current != null){
+            current.displayLink();
+            current = current.previous;
+        }
+        System.out.println("");
     }
 
     public static void main(String[] args) {
         DoublyLinkedListX list = new DoublyLinkedListX();
+        list.insertFirst(30);
+        list.insertFirst(20);
+        list.insertFirst(10);
+        list.insertLast(40);
+        list.insertLast(50);
+
+        list.insertAfter(10, 15);
+        list.deleteKey(20);
+
+        list.displayForward();
+        list.displayBackward();
     }
 
 }
