@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 class Link {
     public int dData;

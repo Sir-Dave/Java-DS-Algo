@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 public class Array {
     private final long[] array;
@@ -91,7 +91,7 @@ public class Array {
         for (int i = 0; i < nElements; i++){
             System.out.println(array[i]);
         }
-        System.out.println("");
+        System.out.println();
     }
 
 

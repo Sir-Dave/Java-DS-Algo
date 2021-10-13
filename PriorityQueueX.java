@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 public class PriorityQueueX {
     // array always sorted from max at 0 to min at size - 1

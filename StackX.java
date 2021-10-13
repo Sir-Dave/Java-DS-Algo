@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 public class StackX {
     private final int maxSize;

@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 public class SortedList {
     Link first;
@@ -41,7 +41,7 @@ public class SortedList {
             current.displayLink();
             current = current.next;
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 public class OrderedArray {
     private final long[] array;
@@ -68,7 +68,7 @@ public class OrderedArray {
         for (int i = 0; i < nElems; i++){
             System.out.println(array[i]);
         }
-        System.out.println("");
+        System.out.println();
     }
 
 

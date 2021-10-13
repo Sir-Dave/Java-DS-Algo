@@ -1,4 +1,4 @@
-package com.sirdave.java_ds_book;
+package com.sirdave.data_structures;
 
 class DoubleLink{
     public int data;
@@ -119,7 +119,7 @@ public class DoublyLinkedListX {
             current.displayLink();
             current = current.next;
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void displayBackward() {
@@ -128,7 +128,7 @@ public class DoublyLinkedListX {
             current.displayLink();
             current = current.previous;
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public static void main(String[] args) {
