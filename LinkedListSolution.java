@@ -74,18 +74,76 @@ public class LinkedListSolution {
         return head;
     }
 
+    //Method 1
+    static int sumReverseNodes(ListNode a, ListNode b){
+        StringBuilder strA = new StringBuilder();
+        StringBuilder strB = new StringBuilder();
+
+        ListNode revA = reverseLinkedList(a);
+        ListNode revB = reverseLinkedList(b);
+
+        while (revA != null){
+            strA.append(revA.val);
+            revA = revA.next;
+        }
+
+        while (revB != null){
+            strB.append(revB.val);
+            revB = revB.next;
+        }
+
+        int A = Integer.parseInt(strA.toString());
+        int B = Integer.parseInt(strB.toString());
+        return A+ B;
+    }
+
+    static ListNode reverseLinkedList(ListNode head){
+        ListNode current = head;
+        ListNode prev = null;
+        while (current != null){
+            ListNode next = current.next;
+            current.next = prev;
+
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
+
+    // Method 2
+    static ListNode addReverseNodes(ListNode a, ListNode b, int carry){
+        if (a == null && b == null && carry == 0){
+            return null;
+        }
+        ListNode result = new ListNode();
+        int value = carry;
+        if (a != null){
+            value += a.val;
+        }
+
+        if (b != null){
+            value += b.val;
+        }
+        result.val = value % 10;
+
+        result.next = addReverseNodes(a == null ? null : a.next,
+                 b == null ? null : b.next, value/10);
+        return result;
+
+    }
+
     public static void main(String[] args) {
-        ArrayList<Integer> a = new ArrayList<>(List.of(1,2,4));
-        ArrayList<Integer> b = new ArrayList<>(List.of(1,3,4, 7, 8, 9));
+        ArrayList<Integer> a = new ArrayList<>(List.of(7, 1, 6));
+        ArrayList<Integer> b = new ArrayList<>(List.of(5, 9));
         ListNode l1 = createLinkedList(a);
         ListNode l2 = createLinkedList(b);
-        //ListNode current = mergeTwoLists(l1, l2);
-        ArrayList<Integer> c = new ArrayList<>(List.of(1,2,2, 3, 4, 4, 5));
-        ListNode head = createLinkedList(c);
-        ListNode current = removeDuplicates(head);
-        while (current != null){
-            System.out.println(current.val);
-            current = current.next;
+
+        ListNode sum = addReverseNodes(l1, l2, 0);
+        while (sum != null){
+            System.out.println(sum.val);
+            sum = sum.next;
         }
+
     }
 }
