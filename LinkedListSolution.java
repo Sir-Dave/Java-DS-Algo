@@ -74,29 +74,6 @@ public class LinkedListSolution {
         return head;
     }
 
-    //Method 1
-    static int sumReverseNodes(ListNode a, ListNode b){
-        StringBuilder strA = new StringBuilder();
-        StringBuilder strB = new StringBuilder();
-
-        ListNode revA = reverseLinkedList(a);
-        ListNode revB = reverseLinkedList(b);
-
-        while (revA != null){
-            strA.append(revA.val);
-            revA = revA.next;
-        }
-
-        while (revB != null){
-            strB.append(revB.val);
-            revB = revB.next;
-        }
-
-        int A = Integer.parseInt(strA.toString());
-        int B = Integer.parseInt(strB.toString());
-        return A+ B;
-    }
-
     static ListNode reverseLinkedList(ListNode head){
         ListNode current = head;
         ListNode prev = null;
@@ -111,7 +88,6 @@ public class LinkedListSolution {
         return prev;
     }
 
-    // Method 2
     static ListNode addReverseNodes(ListNode a, ListNode b, int carry){
         if (a == null && b == null && carry == 0){
             return null;
@@ -133,17 +109,78 @@ public class LinkedListSolution {
 
     }
 
+    // method 1
+    public static boolean isPalindrome(ListNode head){
+        ListNode reversed = reverseAndClone(head);
+        return isEqual(head, reversed);
+    }
+
+    static ListNode reverseAndClone(ListNode node) {
+        ListNode head = null;
+        while (node != null) {
+            ListNode n = new ListNode(node.val); // Clone
+            n.next = head;
+            head = n;
+            node = node.next;
+
+        }
+        return head;
+    }
+
+    public static boolean isEqual(ListNode node1, ListNode node2){
+        while (node1 != null && node2 != null){
+            if (node1.val != node2.val){
+                return false;
+            }
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return node1 == null && node2 == null;
+    }
+
+    // method 2
+    public static boolean isLinkedListPalindrome(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        Stack<Integer> stack = new Stack<>();
+
+        while (fast != null && fast.next != null){
+            stack.push(slow.val);
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        if (fast != null){
+            slow = slow.next;
+        }
+
+        while (slow != null){
+            int top = stack.pop();
+            if (slow.val != top){
+                return false;
+            }
+            slow = slow.next;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        ArrayList<Integer> a = new ArrayList<>(List.of(7, 1, 6));
+        ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
+
+        ListNode node = createLinkedList(list);
+
+        //System.out.println(isPalindrome(node));
+        System.out.println(isLinkedListPalindrome(node));
+
+        /* ArrayList<Integer> a = new ArrayList<>(List.of(7, 1, 6));
         ArrayList<Integer> b = new ArrayList<>(List.of(5, 9));
         ListNode l1 = createLinkedList(a);
         ListNode l2 = createLinkedList(b);
-
         ListNode sum = addReverseNodes(l1, l2, 0);
         while (sum != null){
             System.out.println(sum.val);
             sum = sum.next;
-        }
+        }*/
 
     }
 }
