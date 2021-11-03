@@ -13,7 +13,6 @@ class ListNode {
     }
 }
 
-
 public class LinkedListSolution {
     static ListNode head;
 
@@ -169,8 +168,8 @@ public class LinkedListSolution {
 
         ListNode node = createLinkedList(list);
 
-        //System.out.println(isPalindrome(node));
-        System.out.println(isLinkedListPalindrome(node));
+        System.out.println(isPalindrome(node));
+        //System.out.println(isLinkedListPalindrome(node));
 
         /* ArrayList<Integer> a = new ArrayList<>(List.of(7, 1, 6));
         ArrayList<Integer> b = new ArrayList<>(List.of(5, 9));
