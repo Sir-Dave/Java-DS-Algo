@@ -77,11 +77,14 @@ public class FindLinkedListIntersection {
     }
 
     public static void main(String[] args) {
+        // The code works all right, but this is not the most suitable example
+        // for testing, since we are comparing by reference and not by value...
         ArrayList<Integer> listA = new ArrayList<>(List.of(4,1,8,4,5));
         ArrayList<Integer> listB = new ArrayList<>(List.of(5,6,1,8,4,5));
 
         ListNode nodeA = createLinkedList(listA);
         ListNode nodeB = createLinkedList(listB);
+
 
         ListNode intersection = findIntersection(nodeA, nodeB);
         System.out.println(intersection.val);
