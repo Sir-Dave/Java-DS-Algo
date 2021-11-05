@@ -188,12 +188,29 @@ public class LinkedListSolution {
         return dummy.next;
     }
 
+    static ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+
+        ListNode current = dummy;
+        while (current != null && current.next != null){
+            if (current.next.val == val){
+                current.next = current.next.next;
+            }
+            else {
+                current = current.next;
+            }
+        }
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
+        //ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
+        ArrayList<Integer> list = new ArrayList<>(List.of(1,2,6,3,4,5,6));
 
         ListNode node = createLinkedList(list);
 
-        ListNode head = removeNthFromEnd(node, 2);
+        ListNode head = removeElements(node, 6);
         while (head != null){
             System.out.println(head.val);
             head = head.next;
