@@ -163,12 +163,43 @@ public class LinkedListSolution {
         return true;
     }
 
+    static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        int length = 0;
+        ListNode current = head;
+        while (current != null){
+            length++;
+            current = current.next;
+        }
+
+        current = dummy;
+        int stop = length-n+1;
+        int count = 0;
+        while (current != null){
+            count++;
+            if (count == stop){
+                current.next = current.next.next;
+                break;
+            }
+            current = current.next;
+
+        }
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
 
         ListNode node = createLinkedList(list);
 
-        System.out.println(isPalindrome(node));
+        ListNode head = removeNthFromEnd(node, 2);
+        while (head != null){
+            System.out.println(head.val);
+            head = head.next;
+        }
+
+        //System.out.println(isPalindrome(node));
         //System.out.println(isLinkedListPalindrome(node));
 
         /* ArrayList<Integer> a = new ArrayList<>(List.of(7, 1, 6));
@@ -176,10 +207,7 @@ public class LinkedListSolution {
         ListNode l1 = createLinkedList(a);
         ListNode l2 = createLinkedList(b);
         ListNode sum = addReverseNodes(l1, l2, 0);
-        while (sum != null){
-            System.out.println(sum.val);
-            sum = sum.next;
-        }*/
+        */
 
     }
 }
