@@ -204,17 +204,57 @@ public class LinkedListSolution {
         return dummy.next;
     }
 
+    static ListNode oddEvenList(ListNode head) {
+        ListNode odd = new ListNode();
+        ListNode oddHead = odd;
+        ListNode even = new ListNode();
+        ListNode evenHead = even;
+        ListNode current = head;
+
+        while (current != null){
+            if (current.val % 2 == 0){
+                even.next = current;
+                even.next = even.next.next;
+            }
+            else{
+                odd.next = current;
+                odd = odd.next;
+            }
+
+            current = current.next;
+        }
+
+        //odd.next = evenHead.next;
+
+        current = evenHead.next;//evenHead.next;
+        /**while (current != null && current.next != null){
+            current = current.next;
+        }*/
+
+        while (current != null){
+            System.out.println(current.val);
+            current = current.next;
+        }
+
+        //System.out.println(current.val);
+        //current.next = evenHead.next;
+
+        return oddHead.next;
+
+    }
+
     public static void main(String[] args) {
         //ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
-        ArrayList<Integer> list = new ArrayList<>(List.of(1,2,6,3,4,5,6));
+        ArrayList<Integer> list = new ArrayList<>(List.of(1,2,3,4,5, 6,7,7,8));
 
         ListNode node = createLinkedList(list);
+        oddEvenList(node);
 
-        ListNode head = removeElements(node, 6);
-        while (head != null){
+        //ListNode head = removeElements(node, 6);
+        /**while (head != null){
             System.out.println(head.val);
             head = head.next;
-        }
+        }*/
 
         //System.out.println(isPalindrome(node));
         //System.out.println(isLinkedListPalindrome(node));
