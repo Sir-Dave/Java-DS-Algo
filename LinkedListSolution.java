@@ -204,57 +204,66 @@ public class LinkedListSolution {
         return dummy.next;
     }
 
-    static ListNode oddEvenList(ListNode head) {
+    /*static ListNode oddEvenList(ListNode head) {
+        //Turns out I was solving the wrong problem.
+        //Should be grouped by indices and not values.
+
         ListNode odd = new ListNode();
-        ListNode oddHead = odd;
+        ListNode oddHead = odd; // pointer to the head of the odd nodes
         ListNode even = new ListNode();
-        ListNode evenHead = even;
+        ListNode evenHead = even; // pointer to the head of the even nodes
         ListNode current = head;
 
         while (current != null){
             if (current.val % 2 == 0){
                 even.next = current;
-                even.next = even.next.next;
+                even = even.next;
             }
             else{
                 odd.next = current;
                 odd = odd.next;
             }
-
             current = current.next;
         }
 
-        //odd.next = evenHead.next;
+        // METHOD 2:  join the head of even nodes to the tail of the odd nodes
+        current = evenHead.next;
 
-        current = evenHead.next;//evenHead.next;
-        /**while (current != null && current.next != null){
-            current = current.next;
-        }*/
-
-        while (current != null){
-            System.out.println(current.val);
+        while (current != even.next){
+            odd.next = current;
+            odd = odd.next;
             current = current.next;
         }
-
-        //System.out.println(current.val);
-        //current.next = evenHead.next;
 
         return oddHead.next;
 
+    }*/
+    static ListNode oddEvenList(ListNode head) {
+        if (head == null) return null;
+        ListNode odd = head, even = head.next, evenHead = even;
+        while (even != null && even.next != null) {
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
     }
 
     public static void main(String[] args) {
-        //ArrayList<Integer> list = new ArrayList<>(List.of(0, 1, 2, 1, 0));
-        ArrayList<Integer> list = new ArrayList<>(List.of(1,2,3,4,5, 6,7,7,8));
+        ArrayList<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4,5));
 
         ListNode node = createLinkedList(list);
-        oddEvenList(node);
+        head = oddEvenList(node);
 
-        //ListNode head = removeElements(node, 6);
-        /**while (head != null){
+        while (head != null) {
             System.out.println(head.val);
             head = head.next;
-        }*/
+        }
+
+        //ListNode head = removeElements(node, 6);
+
 
         //System.out.println(isPalindrome(node));
         //System.out.println(isLinkedListPalindrome(node));
