@@ -204,40 +204,6 @@ public class LinkedListSolution {
         return dummy.next;
     }
 
-    /*static ListNode oddEvenList(ListNode head) {
-        //Turns out I was solving the wrong problem.
-        //Should be grouped by indices and not values.
-
-        ListNode odd = new ListNode();
-        ListNode oddHead = odd; // pointer to the head of the odd nodes
-        ListNode even = new ListNode();
-        ListNode evenHead = even; // pointer to the head of the even nodes
-        ListNode current = head;
-
-        while (current != null){
-            if (current.val % 2 == 0){
-                even.next = current;
-                even = even.next;
-            }
-            else{
-                odd.next = current;
-                odd = odd.next;
-            }
-            current = current.next;
-        }
-
-        // METHOD 2:  join the head of even nodes to the tail of the odd nodes
-        current = evenHead.next;
-
-        while (current != even.next){
-            odd.next = current;
-            odd = odd.next;
-            current = current.next;
-        }
-
-        return oddHead.next;
-
-    }*/
     static ListNode oddEvenList(ListNode head) {
         if (head == null) return null;
         ListNode odd = head, even = head.next, evenHead = even;
