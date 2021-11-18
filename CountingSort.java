@@ -1,25 +1,28 @@
 package com.sirdave.data_structures;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CountingSort {
-    static ArrayList<Integer> countingSort(int[] array){
-        int[] count = new int[array.length];
-        ArrayList<Integer> res = new ArrayList<>();
+
+    static int[] countingSort(int[] array){
+        int[] count = new int[10]; // specify the max length based on your input
+
+        int k = 0;
 
         for (int i: array) count[i]++;
         for (int j = 0; j < count.length; j++){
             while (count[j] > 0){
-                res.add(j);
+                array[k] = j;
                 count[j]--;
+                k++;
             }
         }
-        return res;
+        return array;
     }
 
     public static void main(String[] args) {
-        int[] array = {4,3,1,1,2};
-        ArrayList<Integer> res = countingSort(array);
-        System.out.println(res);
+        int[] array = {4,3,1,1,2, 9};
+        int[] res = countingSort(array);
+        System.out.println(Arrays.toString(res));
     }
 }
