@@ -217,6 +217,33 @@ public class LinkedListSolution {
         return head;
     }
 
+    static ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (ListNode node: lists){
+            ListNode current = node;
+            while (current != null){
+                pq.add(current.val);
+                current = current.next;
+            }
+        }
+        ListNode first = null;
+        ListNode head = null;
+        while(!pq.isEmpty()){
+            int val = pq.poll();
+            ListNode node = new ListNode(val);
+            if (first == null){
+                first = node;
+                head = node;
+            }
+            else{
+                head.next = node;
+                head = head.next;
+            }
+        }
+
+        return first;
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4,5));
 
