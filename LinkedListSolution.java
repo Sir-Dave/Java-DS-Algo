@@ -244,11 +244,60 @@ public class LinkedListSolution {
         return first;
     }
 
+    public static ListNode swapNodes(ListNode head, int k) {
+        ListNode dummy = new ListNode();
+
+        dummy.next = head;
+
+        ListNode first = new ListNode();
+        ListNode last = new ListNode();
+
+        int length = 0;
+        ListNode current = head;
+        while (current != null){
+            length++;
+            current = current.next;
+        }
+
+        current = dummy;
+        int count = 0;
+
+        while (current != null){
+            count++;
+            if (count == k){
+                first = current.next;
+                break;
+            }
+            current = current.next;
+        }
+
+        current = dummy;
+        count = 0;
+        int stop = length - k +1;
+
+        while (current != null){
+            count++;
+            if (count == stop){
+                last = current.next;
+                break;
+            }
+            current = current.next;
+        }
+
+        int temp = first.val;
+        first.val = last.val;
+        last.val = temp;
+
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4,5));
 
+
         ListNode node = createLinkedList(list);
-        head = oddEvenList(node);
+        head = swapNodes(node, 2);
+        //head = oddEvenList(node);
 
         while (head != null) {
             System.out.println(head.val);
